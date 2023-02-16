@@ -1,0 +1,63 @@
+.card-text, .card-title, .card-text2{
+  text-align: center;
+}
+.cardImg{
+  border-radius: 5%;
+  min-height: 200px;
+  margin-bottom: 0;
+}
+
+.pi{
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  color: #e99e12;
+  border-radius: 50%;
+  background-color: rgba(2, 2, 2, 0.3);
+}
+
+.card{
+  padding: 10px;
+  border-radius: 5%;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  margin: 15px;
+}
+
+.card:hover{
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.card-title{
+  text-align: center;
+  font: bolder 22px 'Droid Arabic Kufi';
+  /* font-family: 'Droid Arabic Kufi'; */
+  color: rgb(100, 97, 97);
+  margin-bottom: 30px;
+}
+
+.card-text{
+  color: rgb(153, 143, 143);
+  font: bold 18px 'Amiri';
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+.card-text2{
+  color: #e99e12;
+  font: bold 18px 'Droid Arabic Naskh';
+  direction: rtl;
+}
+
+.btn{
+  background-color: #e99e12;
+  color: white;
+  border-radius: 7px;
+}
+
+.s{
+  background-color: #ee0f0f;
+  color: white;
+  border-radius: 7px;
+}

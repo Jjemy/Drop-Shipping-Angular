@@ -1,0 +1,30 @@
+<div class="card">
+    <p-table [columns]="cols" [value]="allOrders" [paginator]="true"  [rows]="5" style="direction: rtl; text-align: center;" (sortFunction)="customSort($event)" [customSort]="true">
+      <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th style="text-align: center;" *ngFor="let col of columns" [pSortableColumn]="col.field" >
+                    {{col.header}} <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+                <th style=" text-align: center;">
+                    Edit status
+                </th>
+            </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td style=" text-align: center;" *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+                <td>
+                    <select style="width: 200px ; height: 45px; background-color: #e7ab3c ;color: aliceblue ; margin-left: 70px ; text-align: center;border-radius: 1rem;width: fit-content;padding: 0px 10px;"
+                        id="selectid" (change)="updateStatus($any($event.target).value,rowData['id'])">
+                    <option style="text-align: center;padding-right: 25px;width: fit-content;padding: 0px 10px;" Value="In Shipping">In shipping</option>
+                    <option style="text-align: center;width: fit-content;padding: 0px 10px;" Value="Deliverd"> Is delivered</option>
+                    <option style="text-align: center;width: fit-content;padding: 0px 10px;" Value="Canceld"> Is cancelled</option>
+                    </select>
+                </td>
+            </tr>
+      </ng-template>
+    </p-table>
+</div>
+

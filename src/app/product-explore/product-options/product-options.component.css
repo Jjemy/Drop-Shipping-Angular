@@ -1,0 +1,76 @@
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+.table{
+    border: none;
+}
+
+.header{
+    font-size: 13px;
+}
+
+.txt{
+    color: rgb(66, 63, 63);
+    font: bold 16px 'Droid Arabic Naskh';
+}
+
+.p-button-raised{
+    width: 100px;
+}
+
+.addBtn{
+    background-color: #e99e12;
+    color: white;
+    border-radius: 7px;
+    width: 100%;
+}
+
+.radio-toolbar {
+    margin: 0;
+  }
+  
+  .radio-toolbar input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+  
+  .radio-toolbar label {
+      display: inline-block;
+      background-color: white;
+      padding: 10px 20px;
+      font-family: sans-serif, Arial;
+      font-size: 16px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      width: 90px;
+  }
+   
+  .radio-toolbar label:hover {
+    background-color: #dfd;
+  }
+  
+  .radio-toolbar input[type="radio"]:focus + label {
+      border: 2px dashed #444;
+  }
+
+  .radio-toolbar input[type="radio"]:checked + label {
+    background-color: #e99e12;
+    border-color: #e99e12;
+    color: white;
+}
+
+
+/* tr {
+    width: 100%;
+    display: inline-table;
+    table-layout: fixed;
+    } */
+    
+    /* table{
+     height:300px;              
+     display: -moz-groupbox;  
+    } */
+    tbody{
+      overflow-y: scroll;      
+      height: 200px;          
+      width: 100%;
+    }

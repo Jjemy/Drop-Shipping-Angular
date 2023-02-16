@@ -1,0 +1,79 @@
+<div class="main" >
+    <h2 style="color: rgb(189, 194, 194);" class="py-2 mx-5 py-5">Dashboard</h2>
+    <div class="container">
+        <div class="row" class="py-5 my-5 mx-3">
+            <div class="column">
+                <div class="card">
+                    <p><i class="fa fa-user"></i></p>
+                    <h3 class="num">{{count?.numOfSupplier}}</h3>
+                    <p>Suppliers</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card1">
+                    <p><i class="fa fa-smile-o"></i></p>
+                    <h3>{{count?.numOfShipping}}+</h3>
+                    <p>Shipping</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <p><i class="fa fa-smile-o"></i></p>
+                    <h3 class="num" >{{count?.numOfMarkiting}}+</h3>
+                    <p>Marketeers</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card1">
+                    <p><i class="fa fa-check"></i></p>
+                    <h3 >{{count?.numOfProduct}}+</h3>
+                    <p>Products</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <p><i class="fa fa-coffee"></i></p>
+                    <h3 class="num" >{{count?.numOfCategory}}+</h3>
+                    <p>Categories</p>
+                </div>
+            </div>
+        </div>
+        <div class="container py-5" >
+            <div>
+                <div class="my-3 py-4">
+                    <span class="heading d-inline-block" >User Rating</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <hr style="border:3px solid #f1f1f1">
+                    <p-chart type="polarArea" [data]="data"></p-chart>
+                    <hr>
+                    <div class="container " style="z-index: 1; overflow-x: auto;">
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table table-striped my-3 mx-3 " style="direction: rtl; text-align: right;">
+                                    <thead>
+                                        <h3  style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;">All Data</h3>
+                                        <tr>
+                                            <th scope="col">User Name</th>
+                                            <th scope="col">Email</th>    
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of newUser"  >
+                                            <td>{{item.userName}}</td>
+                                            <td>{{item.email}}</td>
+                                            <td> 
+                                        </tr>
+                                    </tbody>
+                                </table>    
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

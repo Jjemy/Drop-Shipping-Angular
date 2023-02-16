@@ -1,0 +1,32 @@
+<div>
+  <form [formGroup]="bindingOrder">
+    <p-table [value]="bindingOrders"  [columns]="cols" [paginator]="true" [rows]="5"  >
+      <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let item of cols">{{item.header}}</th>
+            <th>Shipping Company</th>
+            <th>Shipping Policy</th>
+            <th>Accept Shipping</th>
+            <th>Order Details</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" style="overflow-y: hidden;" let-bindingorder>
+        <tr>
+          <td *ngFor="let item of cols">
+            {{bindingorder[item.field]}}
+          </td>
+          <td>
+            <p-dropdown [virtualScroll]="true" [options]="shippingCompanies" optionLabel="companyName" optionValue="id" formControlName="ShippingCompany" placeholder="Choose Shipping Company"></p-dropdown>
+          </td>
+          <td>
+            <input type="text" #Policytext pInputText class="p-inputtext-sm" formControlName="ShippingPolicy" placeholder="Shipping Policy">
+          </td>
+          <td>
+            <button pButton type="button" label="Order Shipping" style="background: #e7ab3c;" class="p-button-warning" (click)="ShippOrder(bindingorder['id'])"></button>
+          </td>
+          <td><button pButton type="button" label="Order Details" style="background: #e7ab3c;" class="p-button-warning" (click)="showOrderDetailDialog(bindingorder['id'])"></button></td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </form>
+</div>

@@ -1,0 +1,130 @@
+<header class="header-section" *ngIf="nav.visible" >
+    <div class="header-top">
+      <div class="container">
+        <div class="ht-left">
+          <div class="mail-service">
+            Drop-Shipping
+          </div>
+          <div *ngIf="loggedIn()" class="phone-service">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            {{ authService.currentUser?.userName || authService.decodedToken?.unique_name | titlecase }}
+          </div>
+        </div>
+        <div class="ht-right">
+          <a *ngIf="!loggedIn()" [routerLink]="['login']" class="login-panel"><i class="fa fa-user"></i>Login</a>
+          <a *ngIf="loggedIn()" (click)="loggedOut()" style="cursor: pointer;" class="login-panel"> 
+            <i class="fa fa-sign-out" aria-hidden="true"></i> 
+          </a>
+          <div class="lan-selector">
+            <select class="language_drop" name="countries" id="countries" style="width:300px;">
+              <option data-image="assets/img/flag-2.jpg"  data-title="English">Engilsh</option>
+              <option data-title="Arabic">عربي</option>
+            </select>
+          </div>
+          <div class="top-social">
+            <a href="#"><i class="ti-facebook"></i></a>
+            <a href="#"><i class="ti-twitter-alt"></i></a>
+            <a href="#"><i class="ti-linkedin"></i></a>
+            <a href="#"><i class="ti-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="loggedIn()" class="container">
+      <div *hasRole="['Marketing']"  class="inner-header">
+        <div class="row">
+          <div class="col-lg-2 col-md-2">
+            <div class="logo">
+              <a href="./index.html">
+                <img src="../../assets/img/logo.png" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-7 col-md-7">
+            <div class="advanced-search">
+              <button type="button" class="category-btn">All Categories</button>
+              <div class="input-group">
+                <input type="text" placeholder="What do you need?">
+                <button type="button"><i class="ti-search"></i></button>
+             </div>
+            </div>
+          </div>
+          <div class="col-lg-3 text-right col-md-3">
+            <ul class="nav-right">
+              <li class="heart-icon">
+                <a href="#">
+                  <i class="icon_heart_alt"></i>
+                  <span>1</span>
+                </a>
+              </li>
+              <li class="cart-icon">
+                <a href="#">
+                  <i (mouseenter)="RefreshCart()" class="icon_bag_alt"></i>
+                  <span>3</span>
+                </a>
+                <div class="cart-hover">
+                  <div class="select-items">
+                    <table>
+                      <tbody>
+                        <tr *ngFor="let item of products">
+                          <td  ><img class="cardImg" [src]="item.option.product.images[0].url" alt=""></td>
+                          <td class="si-text">
+                            <div class="product-selected">
+                              <p>{{item.newPrice}}</p>
+                              <h6>{{item.option.availableOptions}} - {{item.option.product.productName}}</h6>                          </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="select-total">
+                    <span style="font-size:18px !important">Total Price:</span>
+                    <h5 style="font-size:24px">{{total}} EGP</h5>
+                  </div>
+                  <div  class="select-button">
+                    <button [disabled]="disabledButton()" [routerLink]="['/Checkout']" class="primary-btn view-card"
+                    style="margin-left: 28% !important;border-radius: 99999999px !important;border: none !important;outline:none">View Cart</button>
+                  </div>
+                </div>
+              </li>
+              <li class="cart-price">$150.00</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item">
+      <div class="container">
+        <nav class="nav-menu mobile-menu">
+          <ul>
+            <li routerLinkActive="active" *ngIf="loggedIn()" ><a *hasRole="['Marketing' ,'SHIPPING']" [routerLink]="['/home']"  >Home Page</a></li>
+            <li routerLinkActive="active"  *ngIf="loggedIn()"><a [routerLink]="['/products']" *hasRole="['Marketing']" routerLinkActive="active"> Browse  </a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()" ><a class="nav-link" *hasRole="['Supplier']" [routerLink]="['/uploadproduct']">Add Products</a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()" ><a class="nav-link" *hasRole="['Supplier']" [routerLink]="['/supplierProductsList']">Edit Products</a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()"><a  *hasRole="['Marketing' , 'Supplier']" >My Account</a>
+                <ul class="dropdown" >
+                    <li *ngIf="loggedIn()">
+                    <a [routerLink]="['/myorders']" *hasRole="['Supplier']">
+                        My Orders
+                    </a> <!--Supplier-->
+                    </li>
+                    <li *ngIf="loggedIn()"><a  *hasRole="['Marketing']" [routerLink]="['/followorders']" >Follow Orders</a></li>
+                    <li *ngIf="loggedIn()"><a *hasRole="['Supplier' ,'Marketing']"  [routerLink]="['/withdraw']">Withdraw your prophits</a></li>
+                    <li *ngIf="loggedIn()"><a  *hasRole="['Marketing' , 'Supplier']" [routerLink]="['/manageaccount']" >Account Settings</a></li>
+                </ul>
+            </li>
+            <li routerLinkActive="active" *ngIf="loggedIn()" ><a class="nav-link" *hasRole="['Supplier' , 'Marketing']" [routerLink]="['/payment']">How to gain your prophits </a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()"><a routerLink="shippingregister" *hasRole="['Admin']" > Add shipping employee</a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()" ><a routerLink="dashboard" *hasRole="['Admin']" >dashboard</a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()" ><a routerLink="manageWithdrawRequest" *hasRole="['Admin']" >Manage withdrawn Requests</a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()" ><a routerLink="supplierDetails" *hasRole="['Admin']" >New suppliers</a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()" ><a routerLink="UserList" *hasRole="['Admin']" >Users</a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()"><a  *hasRole="['Admin']" [routerLink]="['/managecategory']" > Manage Categories</a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()" ><a routerLink="bindingorders" *hasRole="['Shipping']" >Ship Orders</a></li>
+            <li routerLinkActive="active" *ngIf="loggedIn()" ><a routerLink="ShippingStatus" *hasRole="['Shipping']" > Follow shipped orders</a></li>
+          </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+      </div>
+    </div>
+  </header>

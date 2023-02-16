@@ -1,0 +1,94 @@
+<div class="h-75 pt-3">
+  <div class="container " >
+    <div  class="text-center mb-5 py-4" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;" >How to gain your prophits</div>
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <button type="button" class="  border border-warning  btn btn-muted rounded-pill" style="color: black; font-size: x-large;" data-toggle="modal" data-target="#exampleModal3">
+          Network wallets and electronic banks (Vodafone Cash - etc.)
+        </button>
+      </div>
+      <div class="col text-left my-3">
+        <button type="button" class="w-50 border border-warning  btn btn-muted rounded-pill" style="color: black; font-size: x-large;" data-toggle="modal" data-target="#exampleModal1">
+          Bank transfer
+        </button>
+      </div>
+      <div class="col text-right my-3">
+        <button type="button" class="w-50  border border-warning  btn btn-muted rounded-pill" style="color: black; font-size: x-large;" data-toggle="modal" data-target="#exampleModal2">
+          Postal transfer
+        </button>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" style="width: 100%;" id="exampleModalLabel" >Bank transfer</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="text"  class="rounded text-center input-group input-group-lg  form-control" placeholder="Client Name" [(ngModel)]="obj.clientName">
+          </div>
+          <div class="modal-body">
+            <input type="text"  class="rounded text-center input-group input-group-lg  form-control" placeholder="Bank Name" [(ngModel)]="obj.bankName">
+          </div>
+          <div class="modal-body">
+            <input type="text"  class="rounded text-center input-group input-group-lg  form-control" placeholder="Section" [(ngModel)]="obj.section">
+          </div>
+          <div class="modal-body">
+            <input type="number"  class="rounded text-center input-group input-group-lg  form-control" placeholder="Account Number" [(ngModel)]="obj.accountNumber">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-warning" (click)="save()">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center"  style="width: 100%;" id="exampleModalLabel">Postal Transfer</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="text"  class="rounded text-center input-group input-group-lg  form-control"   placeholder="Your name in the card" [(ngModel)]="obj.cardName"></div>
+            <div class="modal-body">
+              <input type="number"  class="rounded text-center input-group input-group-lg  form-control" maxlength="14" minlength="14" required  placeholder="Enter 14 numbers in your ID" [(ngModel)]="obj.cardNumber">
+            </div>
+            <div class="modal-body">
+              <input type="number"  class="rounded text-center input-group input-group-lg  form-control"   placeholder="Enter your phone number" [(ngModel)]="obj.phoneNumber">
+            </div>
+            <div class="modal-footer container">
+              <button type="button" class="text-center btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="text-center btn btn-warning" (click)="save()">Save</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" style="width: 100%;" id="exampleModalLabel">Wallets or electronic networks</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="number" style="height: 50px; " class="rounded text-center input-group input-group-lg  form-control"   placeholder=" Enter your wallet number" [(ngModel)]="obj.walletNumber">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-warning" (click)="save()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

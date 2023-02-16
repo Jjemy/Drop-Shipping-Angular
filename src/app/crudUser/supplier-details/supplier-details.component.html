@@ -1,0 +1,25 @@
+<div class="container" style="font-family:'Segoe UI';">
+  <table class="table table-striped my-3 mx-3 " style="direction: rtl; text-align: right;">
+    <thead>
+        <h3 class="text-center mb-5" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;"> Suppliers Details</h3>
+        <tr>
+          <th scope="col"> User Name</th>
+          <th scope="col">Email</th>
+          <th>Role</th>
+          <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of usr"  >
+        <td>{{item.userName}}</td>
+        <td>{{item.email}}</td>
+        <td >{{item.roleName}}</td>
+        <td>{{item.emailConfirmed}}</td>
+        <td>
+          <a [routerLink]="['editUser',item.id]" class="btn btn-muted "><i class="fa fa-fw fa-edit"></i> </a>
+        <td> 
+      </tr>
+    </tbody>
+    </table>
+
+</div>

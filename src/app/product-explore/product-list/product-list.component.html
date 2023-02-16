@@ -1,0 +1,47 @@
+<div class="row w-100 p-5">
+    <div class="row col-12 px-5" *ngIf="products != null">
+        <div class="col-4">
+            <p-dropdown class="xxx" styleClass="ml-5 w-75 bg-dark" *ngIf= true  [options]="allCategories" [(ngModel)]="selectedCategory" (onChange)="CategoryChanging($event.value)" optionValue="id"  optionLabel="categoryName"></p-dropdown>
+        </div>
+        <div class="col-8">
+            <div class="text-center mb-5" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;margin-left: 55%;">
+                Top Sellers
+            </div>
+        </div>
+    </div>
+    <div style="min-height: 500px;" class="d-flex justify-content-center align-items-center" *ngIf="products == null">
+        <p-progressSpinner [style]="{width: '50px', height: '50px'}"  styleClass="custom-spinner" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+    </div>
+    <div class="container" *ngIf="topProducts != null">
+        <div>
+            <p-dataView #dv [value]="topProducts" layout="grid" class="p-dataview">
+                <ng-template let-prod pTemplate="gridItem">
+                    <div style="width: fit-content;">
+                        <app-product [product]="prod"></app-product>   
+                    </div>
+                </ng-template>
+            </p-dataView>
+        </div>
+    </div>
+    <hr>
+    <div class="container" *ngIf="products != null">
+        <div>
+            <p-dataView #dv [value]="products" [paginator]="true" [rows]="12" filterBy="productName" [sortField]="sortField" [sortOrder]="sortOrder" layout="grid" class="p-dataview">
+                <ng-template pTemplate="header" class="p-dataview-header">
+                    <div class="d-flex justify-content-between p-5 options bg-white" style="border-radius: 60px;">
+                        <p-dropdown [options]="sortOptions"  placeholder="Sort Products" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+                        <span class="p-input-icon-right p-mb-2 p-mb-md-0 py-2">
+                            <i class="pi pi-search"></i>
+                            <input style="padding-right: 33px;" type="search" pInputText placeholder="Filter By Name" (input)="dv.filter($any($event.target).value)">
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template let-prod pTemplate="gridItem">
+                    <div class="p-col-12 p-md-4">
+                        <app-product [product]="prod"></app-product>
+                    </div>
+                </ng-template>
+            </p-dataView>
+        </div>
+    </div>
+</div>

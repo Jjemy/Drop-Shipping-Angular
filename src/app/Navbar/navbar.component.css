@@ -1,0 +1,10 @@
+.nav-item li{
+    margin-left: 0;
+}
+
+.cardImg{
+    border-radius: 5% !important;
+    min-height: 100px !important;
+    width: 120px !important;
+    margin-bottom: 0 !important;
+}

@@ -1,0 +1,22 @@
+<div class="container" style="font-family:'Segoe UI';">
+  <table class="table table-striped my-3 mx-3 py-2 "  style="direction: rtl; text-align: right;">
+      <thead>
+          <h3 class="text-center mb-5" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;"> Users Data</h3>
+          <tr>
+            <th scope="col"> User Name</th>
+            <th scope="col">Email</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of userList"  >
+          <td>{{item.userName}}</td>
+          <td>{{item.email}}</td>
+          <td>   
+            <a type="button" [routerLink]="['details',item.id]" class="btn btn-muted py-2  my-2"><i class="fa fa-book fa-fw" (click)="detail(item)" ></i> Details</a>
+            <button class="btn btn-muted py-2  my-2" (click)="detail(item)"><i class="fa fa-fw fa-edit"></i> Edit Details</button>
+            <button class="btn btn-muted py-2  my-2" (click)="delete(item)"><i class="fa fa-fw fa-trash"></i> Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

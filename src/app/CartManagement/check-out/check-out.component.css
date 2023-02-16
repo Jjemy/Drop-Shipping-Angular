@@ -1,0 +1,103 @@
+.discount-coupon h6 {
+
+  font-size: 33px !important;
+  width: 500px !important;
+}
+
+.btn-jittery {
+  -webkit-animation: jittery 4s infinite !important;
+          animation: jittery 4s infinite !important;
+          padding: 13px 40px 11px;
+          background: #000000;
+          border-color: #000000;
+          margin-left: 6%;
+          color: white;
+
+}
+.select-dropdown,
+.select-dropdown * {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	box-sizing: border-box;
+}
+.select-dropdown {
+	position: relative;
+	background-color: #E6E6E6;
+	border-radius: 4px;
+}
+.select-dropdown select {
+	font-size: 1rem;
+	font-weight: normal;
+  width: 300px;
+	padding: 8px 24px 8px 10px;
+	border: none;
+	background-color: transparent;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	appearance: none;
+}
+.select-dropdown select:active, .select-dropdown select:focus {
+	outline: none;
+	box-shadow: none;
+}
+.select-dropdown:after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 8px;
+	width: 0;
+	height: 0;
+	margin-top: -2px;
+	border-top: 5px solid #aaa;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+}
+.place-order {
+  margin-top: 21px;
+}
+.myinput
+{
+  background-color: white !important;
+  max-width: 130px;
+  height: 25px;
+  outline: none;
+  margin-bottom: 0px !important;
+  float: right;
+  font-weight: 700;
+  border-style: hidden;
+  text-align: right;
+  color: #e7ab3c;
+  padding-bottom: 2%;
+  font-size: 22px;
+}
+
+
+
+.NewRowColor{
+	background-color: khaki;
+}
+
+table td.centered {
+	text-align: center;
+	width: 25px;
+	padding-left: 10px;
+  }
+
+  .cardImg{
+    border-radius: 5% !important;
+    min-height: 100px !important;
+    width: 120px !important;
+    margin-bottom: 0 !important;
+}
+
+
+
+
+
+
+
+
+
+
+

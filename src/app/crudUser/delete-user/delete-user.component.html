@@ -1,0 +1,32 @@
+<div class="container" style="font-family:'Segoe UI';">
+  <div class="py-2 mx-2 my-2" >
+    <table class="table table-striped my-3 mx-3 py-2 " style="direction: rtl; text-align: right;">
+      <thead>
+        <div class="text-center mb-5" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;" > User Details</div> 
+        <tr>
+          <th scope="col">User Name</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+          <th scope="col">Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <td>{{this.usr.userName}}</td>
+          <td>{{this.usr.firstName}}</td>
+          <td>{{this.usr.lastName}}</td>
+          <td>{{this.usr.email}}</td>
+          <td>{{this.usr.address}}</td>
+          <td>{{this.usr.phoneNumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center mb-5">
+    <button (click)="Cancel()" type="button" class="btn btn-outline-dark mr-3 px-5 " >Cancel</button>
+    <button (click)="delete()" type="button" class="btn px-5 text-white" style="background-color:#e7ab3c; ">Delete</button>
+  </div>
+  <br>
+</div>

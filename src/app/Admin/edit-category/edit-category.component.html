@@ -1,0 +1,20 @@
+<div class="container w-75 my-4" style="font-family:'Segoe UI';">
+  <div class="text-center my-4" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;">
+    Edit Category
+  </div>
+</div>
+
+<div class="row container">
+  <div class="col-3">
+  </div>
+    <div class="col-6  container w-75 mx-auto" style="direction: rtl; text-align: right;">
+       <label  for="catnName" class="form-label">Category Name</label>
+       <input  [(ngModel)]="updatedName" type="text" class="form-control" id="catnName">
+       <button (click)="UpdateCategory()" type="button" class="btn my-4 px-5 text-white" style="background-color:#e7ab3c;">Save</button>
+       <button (click)="Cancel()" type="button" class="btn mr-5 px-5 btn-outline-dark  " >Cancel</button>
+    </div>
+  </div>
+
+
+
+

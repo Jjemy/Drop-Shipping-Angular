@@ -1,0 +1,58 @@
+<div class="container" style="font-family:'Segoe UI';">
+  <div class="py-2 mx-2 my-2" >
+    <table class="table table-striped my-3 mx-3 py-2 " style="direction: rtl; text-align: right;">
+      <thead>
+          <h3 class="text-center mb-5" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;"> User Details</h3>
+        <tr>
+          <th scope="col"> User Name</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+          <th scope="col">Phone Number</th>        
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{this.usr?.userName}}</td>
+          <td>{{this.usr?.firstName}}</td>
+          <td>{{this.usr?.lastName}}</td>
+          <td>{{this.usr?.email}}</td>
+          <td>{{this.usr?.address}}</td>
+          <td>{{this.usr?.phoneNumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <hr>
+  <div class="py-2 mx-2 my-2" >
+    <table class="table table-striped my-3 mx-3 py-2 " style="direction: rtl; text-align: right;">
+      <thead>
+          <h3 class="text-center mb-5" style="font-size:xx-large; font-weight: bolder; color:#e7ab3c;"> Visa Details</h3>
+          <tr>
+            <th scope="col"> Client Name</th>
+            <th scope="col">Bank Name</th>
+            <th scope="col">Account Number</th>
+            <th scope="col">Section</th>
+            <th scope="col">Card Number</th>
+            <th scope="col">Name in Card</th> 
+            <th scope="col">Phone Number</th>
+            <th scope="col">Wallet Number</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{this.visaObj.clientName}}</td>
+          <td>{{this.visaObj.bankName}}</td>
+          <td>{{this.visaObj.accountNumber}}</td>
+          <td>{{this.visaObj.section}}</td>
+          <td>{{this.visaObj.cardNumber}}</td>
+          <td>{{this.visaObj.cardName}}</td>
+          <td>{{this.visaObj.phoneNumber}}</td>
+          <td>{{this.visaObj.walletNumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

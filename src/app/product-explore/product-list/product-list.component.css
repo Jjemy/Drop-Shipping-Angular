@@ -1,0 +1,44 @@
+pagination ::ng-deep ul > li.active > a {
+    background-color: #e99e12 !important;
+    outline: none !important;
+    border-color: none !important;
+ 
+}
+.options{
+    padding: 10px;
+    border-radius: 5%;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(150, 93, 28, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    margin: 15px;
+}
+
+.p-dataview::ng-deep .p-dataview-header{
+    background-color: white !important;
+    border: none !important;
+}
+
+.xxx::ng-deep .p-dropdown-label, .xxx::ng-deep .p-dropdown .p-dropdown-trigger{
+    color:white !important;
+    padding: 10px;
+}
+
+.p-grid.p-nogutter.grid.grid-nogutter {
+    display: flex;
+    -khtml-display:flex; 
+    -moz-display:flex; 
+    -ms-display:flex;
+    background-color: black;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+}
+
+:host ::ng-deep .p-grid {
+    display: flex;
+    flex-wrap: wrap;
+}

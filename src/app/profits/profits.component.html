@@ -1,0 +1,46 @@
+<p-toast position="bottom-center" key="bc"></p-toast>
+
+<div class="p-5 d-flex align-items-center justify-content-center container">
+    <div class="row">  
+        <div class="col text-center py-5 px-3 mx-2" style="background-image: linear-gradient(to bottom, #e7e7e773, #cececea3); border-radius: 40px;"> <!--expected profits-->           
+            <h3 style="color: rgb(133, 65, 127);">{{profitsData?.expectedProfits}} EGP</h3>
+            <h5 style="color: rgb(133, 65, 127);">Expected profits</h5>
+            <p class="px-3">
+                profits of the orders to be delivered except those who was cancelled or was not delivered
+            </p>        
+        </div>
+        <div class="col text-center py-5 px-3 mx-2" style="background-image: linear-gradient(to bottom, #25d25f24, #048f3340); border-radius: 40px;"> <!--withdrawn profits-->
+            <h3 style="color: rgb(63, 122, 83);">{{profitsData?.availableProfits}} EGP</h3>
+            <h5 style="color: rgb(63, 122, 83);">available Profits</h5>
+            <p class="px-3">
+                Profits of the orders that was delivered before the last 24 hours to the clients
+            </p>    
+        </div>
+
+        <div class="col text-center py-5 px-3 mx-2" style="background-color: #ffefe5; border-radius: 40px;"> <!--total profits-->
+            <h3 style="color: #e7ab3c;">{{profitsData?.totalProfits}} EGP</h3>
+            <h5 style="color: #e7ab3c;">Your total profits since you started working with us</h5>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="profitsData?.recentTransferred!=0" class="p-5 my-4 container d-flex justify-content-end msg w-75" style="font-weight: bold; font-size: 20px;">
+      An amount of {{profitsData?.recentTransferred}} is transferred to your account in the last 48 hours
+</div>
+
+<div *ngIf="profitsData?.hasPaymentMethod" class="py-5 container">
+    <fieldset  [disabled]="!profitsData?.isRequestAvailable" class="row w-50 mx-auto">     
+        <input class="mx-2 col-8" [(ngModel)]="money" type="number" [max]="profitsData?.availableProfits" min="0" pInputText placeholder="Required amount of money"> 
+        <button (click)="sendRequest()" class="btn btn-info mx-2 col-3">Send request</button>   
+    </fieldset> 
+    <div class="row w-50 mx-auto mt-3 text-info d-flex justify-content-center" style="font-size: 18px;" *ngIf="!profitsData?.isRequestAvailable">
+        The request was sent, the service will be available again when the transfer is done.
+    </div>
+</div>     
+
+<div *ngIf="!profitsData?.hasPaymentMethod" style="border-radius: 6px; text-align: right;" class="py-3 w-50 container px-3 my-4 alert alert-danger">    
+    You should register your withdrawal method at first
+    <br>
+    Register your withdrawal method
+    <a [routerLink]="['/payment']" target="_blank">here</a>
+</div>

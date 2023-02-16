@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-6">
+    <p-galleria [value]="product.images" [responsiveOptions]="responsiveOptions" [containerStyle]="{'width': '100%', 'max-height': '600px'}" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false">
+      <ng-template pTemplate="item" let-item>
+        <img [src]="item" style="width: 100%; display: block; border-radius: 20px; min-height: 400px; max-height: 400px; object-fit: cover;" />
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+        <div class="p-grid p-nogutter p-justify-center">
+            <img [src]="item" style="display: block;" />
+        </div>
+      </ng-template>
+    </p-galleria>
+  </div>
+  <div class="col-6">
+    <div class="row">
+      <div class="col">
+        <h3 style="text-align: right;">{{product.productName}}</h3>
+      </div>
+      <div class="col">
+        <button pButton pRipple (click)="closeModel()" type="button" icon="pi pi-times" class="p-button-rounded p-button-warning p-button-outlined"></button>
+      </div>
+    </div><br>
+    <div style="height: 300px; overflow-y: auto;">
+      <table class="table noborder">
+        <thead style="text-align: center;"> 
+          <tr class="header">
+            <th scope="col">Available Options</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+          </tr> 
+        </thead>
+        <tbody style="text-align: center;">
+          <tr *ngFor="let o of product.options">
+            <td>
+              <div class="radio-toolbar">
+                <input type="radio" [(ngModel)] = "optionId" [id]="o.id" name="radioOption" [value]="o.id">
+                <label [for]="o.id">{{o.name}}</label>      
+              </div>
+            </td>
+            <td class="txt">{{o.stockIn}}</td>
+            <td class="txt">{{o.itemPrice}} EGP</td>
+            <td><input [(ngModel)]="quantity" type="number" style="width:70px" min="1"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button #addBtn [disabled]="optionId==undefined || (quantity>0)==false" (click)="addToCart()" class="btn px-4 addBtn">Add to cart</button>        
+  </div>
+</div>

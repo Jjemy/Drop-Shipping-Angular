@@ -1,0 +1,162 @@
+<section class="checkout-section spad">
+  <div class="container">
+    <form (ngSubmit)="makeOrder()" [formGroup]="myForm" class="checkout-form">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="place-order">
+            <h4 class="text" style="color: #e7ab3c;margin-left: 40%;">Bill</h4>
+            <div class="order-total">
+              <ul class="order-table">
+                <li>Product <span>Total</span></li>
+                <li class="fw-normal">Products Price
+                  <span>{{total}} EGP</span>
+                </li>
+                <li class="fw-normal group-input">Shipping Price
+                  <span>EGP</span>
+                  <input type="text" class="myinput" readonly formControlName="shippingProfits"  [ngModel]="shippingPrice"/>
+                </li>
+                <li class="fw-normal">Site prophits
+                  <span>EGP</span>
+                  <input type="text" class="myinput" readonly formControlName="siteProfits"  [ngModel]="Updateprice * 10/100 "/>
+                </li>
+                <li class="fw-normal">Prophits from the customer
+                  <span> {{Updateprice}} EGP</span>
+                </li>
+                <li class="total-price">Total Price
+                  <span>{{ totalPrices + (Updateprice * .1) + shippingPrice}} EGP</span>
+                </li>
+                <li class="total-price">Total Prophits
+                    <span>EGP</span>
+                    <input type="text" class="myinput" readonly formControlName="marketingProfits"  [ngModel]="Updateprice -(totalPrices +  (Updateprice * 10/100) + shippingPrice) "/>
+                </li>
+              </ul>
+              <div class="order-btn">
+                <button [disabled]="myForm.invalid" type="submit"  class="btn btn-primary btn-jittery"> Complete Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <section class="shopping-cart spad">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="cart-table">
+                    <table id="tb1" >
+                      <thead>
+                        <tr>
+                          <th>Product Image</th>
+                          <th style="text-align: center !important;" class="p-name">Product Name </th>
+                          <th>Product Price </th>
+                          <th>Quantity</th>
+                          <th>Stock </th>
+                          <th>
+                            <input type="checkbox" class="ckheader" (change)="selectAll()">
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of options">
+                          <td class="cart-pic first-row"><img class="cardImg" [src]="item.option.product.images[0].url"alt="" ></td>
+                          <td style="text-align: center !important;" class="cart-title first-row">
+                            <h5>{{item.option.availableOptions}} - {{item.option.product.productName}}</h5>
+                          </td>
+                          <td class="p-price first-row">{{item.option.itemPrice}}</td>
+                          <td class="qua-col first-row">
+                            <div class="quantity">
+                              <div>
+                                <input #myInput type="number" min="1" (change)="updateQuantity(item.optionId,myInput.value)" class="form-control" value={{item.quantity}} style="margin-top: 22%;">
+                              </div>
+                            </div>
+                          </td>
+                          <td class="total-price first-row">{{item.option.stockIn}}</td>
+                          <td class="centered"> <input  style="text-align:center;" ng-model="x.dedbuffer" type="checkbox" class="ckitem" value="{{item.id}}" (change)="selectAll()"> </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <button dir="rtl" type="button"  class="btn btn-danger" (click)="DeleteCount()" [disabled]="!IsDelete()" data-toggle="modal" data-target="#exampleModal">
+                    Delete Selected Items
+                  </button>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Delete Alert</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          You have chosen {{num}} Items to delete, Do you realy want to delete them?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-danger" (click)="DeleteConfirm()"> Confirm Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="discount-coupon">
+                    <h6 class="text" style="text-align: right; margin-left: 30%;">Calculate shipping price for the order</h6>
+                      <div>
+                        <div class="proceed-checkout" style="   width: 100% !important;">
+                          <ul>
+                            <li class="subtotal"> Choose the city where the order will be delivered
+                              <span>
+                                <div class="select-dropdown">
+                                  <select formControlName="shippingId" name="city" (ngModelChange)="modelChangeFn($event)">
+                                    <option *ngFor="let ship of shipping" [ngValue]="ship.id"> {{ship.city}}</option>
+                                  </select>
+                                </div>
+                                {{city}}
+                              </span>
+                            </li>
+                            <li class="cart-total">Shipping price
+                              <span>{{shippingPrice}}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <h6 class="text" style="text-align: right;margin-left: 30%;">Calculate your earning </h6>
+                      <div>
+                        <div class="proceed-checkout">
+                          <ul>
+                            <li class="subtotal">Enter the quantity to get from the customer
+                              <span>
+                                <input formControlName="dealPrice" name="dealPrice" [(ngModel)]="Updateprice" type="number">
+                              </span>
+                            </li>
+                            <li class="cart-total">Your earning
+                              <span>{{ Updateprice -(totalPrices + (Updateprice * .1) + shippingPrice) }} EGP</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                  </div>
+                  <h4 class="text" style="text-align: right !important; font-size: 30px;">Client Details
+                  </h4>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <label for="fir">Name <span>*</span></label>
+                      <input formControlName="clientName" name="clientName" type="text">
+                    </div>
+                    <div class="col-lg-6">
+                      <label for="phone"> Phone Number
+                        <span>*</span></label>
+                      <input formControlName="phone" name="phone" type="number" maxlength="11">
+                    </div>
+                    <div class="col-lg-12">
+                      <label for="cun-name">Address</label>
+                      <input formControlName="address" name="address" type="text" id="cun-name">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

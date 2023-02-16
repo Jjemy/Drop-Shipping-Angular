@@ -1,0 +1,21 @@
+.card{
+    
+    border-radius: 5%;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+h3{
+    color: #e7ab3c;
+}
+
+.header{
+    background-color: #191919;
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+h4{
+    text-align: right;
+}

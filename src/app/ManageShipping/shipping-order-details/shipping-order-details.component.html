@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <p>
+      Shipping Order Details
+    </p>
+  </div>
+  
+  <div class="row">
+    <button pButton pRipple (click)="closeModal()" type="button" icon="pi pi-times"class="p-button-rounded p-button-warning p-button-outlined"></button>
+  </div>
+  
+  <div class="row">
+    <table class="table noborder">
+      <thead style="text-align: center;">
+        <tr class="header">
+          <th scope="col">Supplier Name</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Options</th>
+          <th scope="col">Quantity</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center;">
+        <tr *ngFor="let item of shippingOrderDetails">
+          <td>{{item.suplierName}}</td>
+          <td>{{item.productName}}</td>
+          <td>{{item.availableOptions}}</td>
+          <td>{{item.quantity}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
